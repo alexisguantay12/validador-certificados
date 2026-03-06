@@ -1,3 +1,4 @@
+{%load static%}
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -24,7 +25,11 @@
         border-bottom: 1px solid #d7d7d7;
         min-height: 164px;
     }
-
+    .brand-logo{
+        height:110px;
+        width:auto;
+        margin-right:10px;
+    }
     .header-inner {
         max-width: 1540px;
         margin: 0 auto;
@@ -352,7 +357,7 @@
 
         .btn-validar {
             min-width: 90px;
-        }
+        } 
     }
 </style>
 </head>
@@ -361,7 +366,7 @@
 <div class="top-header">
     <div class="header-inner">
         <div class="brand-wrap">
-            <div class="brand-seal"></div>
+            <img src="{% static 'img/unsa.png' %}" class="brand-logo">
 
             <div class="brand-text">
                 <h1 class="brand-title">SIU<span class="blue">GUARANÍ</span></h1>
