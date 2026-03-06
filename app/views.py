@@ -2,34 +2,51 @@ from django.shortcuts import render
 
 CERTIFICADOS = [
     {
-        "documento": "12345678",
-        "codigo": "ABC123",
-        "nombre": "Juan Perez",
-        "curso": "Python",
-        "fecha": "2026"
+        "documento": "40899934",
+        "codigo": "25122321551882",
+        "nombre": "Alexis Ramon Guantay",
+        "materia": "Desarrollo de Software",
+        "fecha": "17/12/2025",
+        "pdf": 'pdf/certificado_desarrollosoftware.pdf'
     },
     {
-        "documento": "30111222",
-        "codigo": "SIU2026",
-        "nombre": "Maria Lopez",
-        "curso": "Bases de Datos",
-        "fecha": "2025"
+        "documento": "40899934",
+        "codigo": "1225122321551993",
+        "nombre": "Alexis Ramon Guantay",
+        "materia": "Analisis y Diseño de Sistemas de Informacion 2",
+        "fecha": "03/03/2026",
+        "pdf": "pdf/certificado_adsi2.pdf"
     }
 ]
 
+
 def validador(request):
+
+    # datos para autocompletar desde QR
+    dni = request.GET.get("dni", "")
+    solicitud = request.GET.get("solicitud", "")
+
     if request.method == "POST":
-        documento = request.POST.get("documento", "").strip()
-        codigo = request.POST.get("codigo", "").strip().upper()
+
+        documento = request.POST.get("documento")
+        codigo = request.POST.get("codigo")
 
         for cert in CERTIFICADOS:
-            if cert["documento"] == documento and cert["codigo"].upper() == codigo:
+
+            if cert["documento"] == documento and cert["codigo"] == codigo:
+
                 return render(request, "valido.html", {
-                    "resultado": cert
+                    "cert": cert,
+                    "pdf": cert["pdf"]
                 })
 
         return render(request, "home.html", {
-            "error": "No se encontró ningún certificado con esos datos."
+            "error": "No se encontró ningún certificado con esos datos.",
+            "dni": documento,
+            "solicitud": codigo
         })
 
-    return render(request, "home.html")
+    return render(request, "home.html", {
+        "dni": dni,
+        "solicitud": solicitud
+    })

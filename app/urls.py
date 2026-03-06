@@ -3,6 +3,6 @@ from .views import validador
 
 urlpatterns = [
 
-    path("validador/", validador, name="validador_certificados"),
+    path("autogestion/validador_certificados/", validador, name="validador_certificados"),
 
 ]
