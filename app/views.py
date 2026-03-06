@@ -11,7 +11,7 @@ CERTIFICADOS = [
     },
     {
         "documento": "40899934",
-        "codigo": "1225122321551993",
+        "codigo": "122521551993",
         "nombre": "Alexis Ramon Guantay",
         "materia": "Analisis y Diseño de Sistemas de Informacion 2",
         "fecha": "03/03/2026",
